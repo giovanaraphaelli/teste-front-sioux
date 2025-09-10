@@ -1,7 +1,11 @@
-# FORMULÁRIO - Teste front-end
+# Teste front-end
 
 Este projeto é uma **landing page** desenvolvida como parte de um desafio técnico para a vaga de **Desenvolvedor(a) Front-end**.  
 O objetivo é implementar as telas do Figma com **semântica correta**, **uso consistente do TailwindCSS** e **alta fidelidade visual**.
+
+## Deploy
+
+O projeto está disponível em: [teste-front-sioux.giovanaraphaelli.tech](https://teste-front-sioux.giovanaraphaelli.tech)
 
 ## Tecnologias Utilizadas
 
@@ -42,9 +46,9 @@ pnpm install
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
 ```
 
