@@ -16,14 +16,17 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-
-export default function Navbar() {
+import { MenuItem } from "@/app/interfaces";
+interface NavBarProps {
+  menus: MenuItem[];
+}
+export default function Navbar({ menus }: NavBarProps) {
   return (
     <header className="w-full bg-background">
       <div className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" aria-label="Página inicial">
           <Image
-            src="/logo.png"
+            src="/assets/logo.png"
             alt="Logoipsum"
             width={160}
             height={29}
@@ -38,27 +41,15 @@ export default function Navbar() {
           aria-label="Menu principal"
         >
           <NavigationMenuList className="flex space-x-2">
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="#sobre" className="hover:text-secondary">
-                  Sobre
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="#produtos" className="hover:text-secondary">
-                  Produtos
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="#contato" className="hover:text-secondary">
-                  Contato
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {menus.map((item) => (
+              <NavigationMenuItem key={item.name}>
+                <NavigationMenuLink asChild>
+                  <Link href={item.url} className="hover:text-secondary">
+                    {item.name}
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
 
@@ -86,24 +77,15 @@ export default function Navbar() {
                 className="flex flex-col gap-4 ml-4"
                 aria-label="Menu principal"
               >
-                <Link
-                  href="#sobre"
-                  className="text-accent text-xl hover:text-secondary"
-                >
-                  Sobre
-                </Link>
-                <Link
-                  href="#produtos"
-                  className="text-accent text-xl hover:text-secondary"
-                >
-                  Produtos
-                </Link>
-                <Link
-                  href="#contato"
-                  className="text-accent text-xl hover:text-secondary"
-                >
-                  Contato
-                </Link>
+                {menus.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.url}
+                    className="text-accent text-xl hover:text-secondary"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </nav>
             </SheetContent>
           </Sheet>
